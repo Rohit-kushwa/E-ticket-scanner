@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ticket Scanner</string>
+    <string name="title_activity_login_screen">LoginScreenActivity</string>
+    <string name="title_activity_splash_screen">splashScreenActivity</string>
+</resources>
