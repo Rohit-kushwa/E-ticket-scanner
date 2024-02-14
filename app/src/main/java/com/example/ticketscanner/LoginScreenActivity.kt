@@ -55,6 +55,8 @@ import com.example.ticketscanner.viewModels.LoginViewModel
 
 class LoginScreenActivity : ComponentActivity() {
 
+    var viewModel: LoginViewModel = LoginViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -121,7 +123,7 @@ class LoginScreenActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(bottom = 40.dp,),
+                        .padding(bottom = 40.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
 
@@ -152,6 +154,7 @@ class LoginScreenActivity : ComponentActivity() {
                 }
                 Button(
                     onClick = {
+                        viewModel.login(username = UserId, password = password, onResult = {})
                     }, shape = RoundedCornerShape(20.dp), modifier = Modifier
                         .size(width = 260.dp, height = 55.dp)
                 ) {
@@ -165,6 +168,6 @@ class LoginScreenActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun LoginScreenActivityPreview(){
+fun LoginScreenActivityPreview() {
     LoginScreenActivity()
 }
