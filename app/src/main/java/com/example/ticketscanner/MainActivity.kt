@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.ticketscanner.Instances.LoginInterface
 import com.example.ticketscanner.Screens.ScannerBarcode
 import com.example.ticketscanner.ui.theme.TicketScannerTheme
 import kotlinx.coroutines.launch
@@ -43,24 +42,6 @@ class MainActivity : ComponentActivity() {
 
                     ScannerBarcode(barcodeScanner::startScan, barcodeResults.value )
 
-                    val retrofit = Retrofit.Builder()
-                        .baseUrl("https://eticket-uat.ckcloud.in/api/")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build()
-
-                    val apiService = retrofit.create(LoginInterface::class.java)
-
-                    lifecycleScope.launch {
-                        try {
-                            val userName = "your_username"
-                            val password = "your_password"
-                            val loginResponse = apiService.login(userName, password)
-                            // Handle the loginResponse
-                            Log.d("LoginResponse", "ID: ${loginResponse.loginModel.get(0)}, LoginStatus: ${loginResponse.loginModel.get(1)}")
-                        } catch (e: Exception) {
-                            // Handle exceptions
-                        }
-                    }
 
 
                 }
